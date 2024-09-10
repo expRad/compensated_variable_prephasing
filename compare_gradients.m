@@ -7,7 +7,7 @@ end
 [pathstr,name,ext]  = fileparts(mfile_name);
 cd(pathstr);
 % Add necessary scripts to the MATLAB path
-folder1 = '.\GSTF_code\';
+folder1 = '.\helper_functions\';
 addpath(folder1);
 %%
 path_1 = '.\GSTF_data\';
