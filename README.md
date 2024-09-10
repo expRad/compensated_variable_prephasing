@@ -14,7 +14,7 @@ The code is written in MATLAB (R2023b)
 In order for all scripts to run faultless, the *Michigan image reconstruction toolbox (MIRT)* has to be downloaded from [https://web.eecs.umich.edu/~fessler/irt/fessler.tgz](https://web.eecs.umich.edu/~fessler/irt/fessler.tgz) or [http://web.eecs.umich.edu/~fessler/irt/irt](http://web.eecs.umich.edu/~fessler/irt/irt). Information about the toolbox can be found [here](https://web.eecs.umich.edu/~fessler/code/). The content of the toolbox (the folder named *irt*) needs to be placed inside the folder named *MIRT_toolbox* of this repository.
 Additionally, some scripts from the *UCI image reconstruction* repository need to be downloaded from [https://github.com/jdoepfert/UCI_image_reconstruction/tree/master/NUFFT/%40NUFFT](https://github.com/jdoepfert/UCI_image_reconstruction/tree/master/NUFFT/%40NUFFT) and placed inside the folder *EPI_recon_NUFFT/@NUFFT* of this repository. It should then contain NUFFT.m, ctranspose.m, mtimes.m, times.m, and transpose.m.
 
-Furthermore, the data used for this publication need to be downloaded from [zenodo](t.b.a.).
+Furthermore, the data used for this publication need to be downloaded from [zenodo](https://zenodo.org/doi/10.5281/zenodo.13742003).
 
 The repository should finally contain the following folders and scripts at the same hierarchy level as this file:
 * EPI_data
