@@ -8,7 +8,7 @@ end
 cd(pathstr);
 % Add necessary scripts to the MATLAB path
 folder1 = '.\EPI_Recon_NUFFT\';
-folder2 = '.\GSTF_code\';
+folder2 = '.\helper_functions\';
 addpath(genpath(folder1), folder2);
 % Run setup for MIRT toolbox
 run ('.\MIRT_toolbox\irt\setup.m');
@@ -24,7 +24,7 @@ name2load_traj = '.\gradient_data\GradMeas_FCVP_EPI_iso13FOVph80_x_10Dum_10VP_9s
 nMeas = 20;
 nMeas_sim = 1;
 B0_correction = 0;
-PE_dir_90deg = 0; % Is the PE direction turned by 90°, i.e. for transversal slices R->L instead of A->P?
+PE_dir_90deg = 0; % Is the PE direction turned by 90Â°, i.e. for transversal slices R->L instead of A->P?
 delays_nom = (-10:10)*1e-7 + 2e-6;
 delays_girf = (-10:10)*1e-7 - 1e-6;
 delays_meas = (-10:10)*1e-7 + 7e-6;
