@@ -1,0 +1,2 @@
+In this folder, you need to place the NUFFT scripts from the UCI_image_reconstructions toolbox.
+You can find them here: https://github.com/jdoepfert/UCI_image_reconstruction/tree/master/NUFFT/%40NUFFT
