@@ -6,9 +6,9 @@ This repository contains instructions and source code to reproduce the results p
 > Scholten H, Wech T, Homolya I, Köstler H
 > (currently under review)
 
-Please cite this work if you use the content of this repository in your project.
+Please cite this work if you use the content of this repository in your project. A preprint of the article is available on [arXiv](https://arxiv.org/abs/2409.07203).
 
-The code is written in MATLAB (R2023b)
+The code is written in MATLAB (R2023b).
 
 ## Preparation
 In order for all scripts to run faultless, the *Michigan image reconstruction toolbox (MIRT)* has to be downloaded from [https://web.eecs.umich.edu/~fessler/irt/fessler.tgz](https://web.eecs.umich.edu/~fessler/irt/fessler.tgz) or [http://web.eecs.umich.edu/~fessler/irt/irt](http://web.eecs.umich.edu/~fessler/irt/irt). Information about the toolbox can be found [here](https://web.eecs.umich.edu/~fessler/code/). The content of the toolbox (the folder named *irt*) needs to be placed inside the folder named *MIRT_toolbox* of this repository.
