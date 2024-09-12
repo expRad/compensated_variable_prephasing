@@ -4,6 +4,8 @@ function [ out_grad, dwelltime ] = calcMeasOutput_VP_selectSlices_mat( file, num
 % The raw data, however, is assumed to be the same as in the CVP or FCVP method.
 % Part of it is neglegted for the calculations in the end.
 
+% Copyright (c) 2024 Hannah Scholten
+
 %% Read rawdata
 rawdata = load(file);
 

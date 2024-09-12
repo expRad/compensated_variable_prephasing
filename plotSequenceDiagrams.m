@@ -1,3 +1,5 @@
+% Copyright (c) 2024 Hannah Scholten
+
 %% rf-pulse
 x_rf = linspace(-0.5,0.5,100);
 y_rf = sin(x_rf*19)./(x_rf*19);

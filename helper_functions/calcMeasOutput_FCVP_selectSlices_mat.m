@@ -4,6 +4,8 @@ function [ out_grad, dwelltime, out_VPonly, invcovmat ] = calcMeasOutput_FCVP_se
 % For "compensated variable-prephasing" (CVP): set compConcomit = 0
 % For "fully compensated variable-prephasing" (FCVP): set compConcomit = 1
 
+% Copyright (c) 2024 Hannah Scholten
+
 %% Read rawdata
 rawdata = load(file);
 
