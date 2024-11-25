@@ -9,20 +9,20 @@ end
 [pathstr,name,ext]  = fileparts(mfile_name);
 cd(pathstr);
 % Add necessary scripts to the MATLAB path
-folder1 = '.\EPI_Recon_NUFFT\';
-folder2 = '.\helper_functions\';
+folder1 = ['.' filesep 'EPI_Recon_NUFFT' filesep];
+folder2 = ['.' filesep 'helper_functions' filesep];
 addpath(genpath(folder1), folder2);
 % Run setup for MIRT toolbox
-run ('.\MIRT_toolbox\irt\setup.m');
+run (['.' filesep 'MIRT_toolbox' filesep 'irt' filesep 'setup.m']);
 
 
 %% DEFINE DATA PATHS
-path2save = '.\EPI_results\';
+path2save = ['.' filesep 'EPI_results' filesep];
 
-name2load_meas = '.\EPI_data\EPI_tra_peAP_FOVph80_sliceISO.mat';
-name2load_sim = '.\gradient_data\sim_EPI_tra_peAP_FOVph80.mat';
-name2load_traj = '.\gradient_data\GradMeas_FCVP_EPI_iso13FOVph80_x_10Dum_10VP_9sl_CCoff.mat';
-% name2load_traj = '.\gradient_data\GradMeas_FCVP_EPI_iso13FOVph80_x_10Dum_10VP_9sl_CCon.mat'; % FCVP measurement of the readout gradient!
+name2load_meas = ['.' filesep 'EPI_data' filesep 'EPI_tra_peAP_FOVph80_sliceISO.mat'];
+name2load_sim = ['.' filesep 'gradient_data' filesep 'sim_EPI_tra_peAP_FOVph80.mat'];
+name2load_traj = ['.' filesep 'gradient_data' filesep 'GradMeas_FCVP_EPI_iso13FOVph80_x_10Dum_10VP_9sl_CCoff.mat'];
+% name2load_traj = ['.' filesep 'gradient_data' filesep 'GradMeas_FCVP_EPI_iso13FOVph80_x_10Dum_10VP_9sl_CCon.mat']; % FCVP measurement of the readout gradient!
 nMeas = 20;
 nMeas_sim = 1;
 B0_correction = 0;
@@ -30,7 +30,7 @@ PE_dir_90deg = 0; % Is the PE direction turned by 90°, i.e. for transversal sli
 delays_nom = (-10:10)*1e-7 + 2e-6;
 delays_girf = (-10:10)*1e-7 - 1e-6;
 delays_meas = (-10:10)*1e-7 + 7e-6;
-x0 = 68; y0 = 175; r_out=62; % center point and radius of circular mask
+x0 = 68; y0 = 175; r_out=63; % center point and radius of circular mask
 name2save = 'multiDelay_EPI_tra_peAP_FOVph80_CVP_new.mat';
 % Change the name based on what gradient measurement you use (line 101-107)
 % name2save = 'multiDelay_EPI_tra_peAP_FOVph80_VP_new.mat';
@@ -58,9 +58,9 @@ SoS = 1; % Do Sum-Of-Squares coil combination?
 coil_i = 10; % If SoS==0, the image of this coil element will be stored in the results. Number has to be <33.
 
 %% LOAD GSTFs
-GIRF_x_data = load('.\GSTF_data\Hx_fast_FT0_1030.mat');
-GIRF_y_data = load('.\GSTF_data\Hy_fast_FT0_1030.mat');
-GIRF_z_data = load('.\GSTF_data\Hz_fast_FT0_1030.mat');
+GIRF_x_data = load(['.' filesep 'GSTF_data' filesep 'Hx_fast_FT0_1030.mat']);
+GIRF_y_data = load(['.' filesep 'GSTF_data' filesep 'Hy_fast_FT0_1030.mat']);
+GIRF_z_data = load(['.' filesep 'GSTF_data' filesep 'Hz_fast_FT0_1030.mat']);
 
 %% READ RAW DATA
 disp('Read raw data');
@@ -251,7 +251,7 @@ for loopcount = 1:length(delays_nom)
         grad_traj = grad_traj_orig;
     end
     
-    [kRO_meas, B0phase_meas_CCoff] = calc_kRO(grad_traj, dwelltime_traj, meas_delay, t_axis_ADC, t_sim, adc, nRO, nPE);
+    [kRO_meas, B0phase_meas] = calc_kRO(grad_traj, dwelltime_traj, meas_delay, t_axis_ADC, t_sim, adc, nRO, nPE);
     
     %% RECONSTRUCTIONS WITH NUFFT
     disp('Reconstruction (NUFFT)')
@@ -290,8 +290,8 @@ for loopcount = 1:length(delays_nom)
         for coil = 1:nCoils
             for slice = 1:nSlices
                 for meas = 1:nMeas*nAvg
-                    raw_girf(:,coil,:,slice,meas) = squeeze(raw(:,coil,:,slice,meas)) .* squeeze(exp(-1i*B0phase_girf(:,:,meas)));
-                    raw_meas(:,coil,:,slice,meas) = squeeze(raw(:,coil,:,slice,meas)) .* exp(-1i*B0phase_meas_CCoff);
+                    raw_girf(:,coil,:,slice,meas) = squeeze(raw(:,coil,:,slice,meas)) .* squeeze(exp(-1i*B0phase_girf));
+                    raw_meas(:,coil,:,slice,meas) = squeeze(raw(:,coil,:,slice,meas)) .* exp(-1i*B0phase_meas);
                 end
             end
         end

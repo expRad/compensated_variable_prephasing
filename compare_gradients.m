@@ -9,11 +9,11 @@ end
 [pathstr,name,ext]  = fileparts(mfile_name);
 cd(pathstr);
 % Add necessary scripts to the MATLAB path
-folder1 = '.\helper_functions\';
+folder1 = ['.' filesep 'helper_functions' filesep];
 addpath(folder1);
 %%
-path_1 = '.\GSTF_data\';
-path_2 = '.\gradient_data\';
+path_1 = ['.' filesep 'GSTF_data' filesep];
+path_2 = ['.' filesep 'gradient_data' filesep];
 
 %% Load GSTFs
 H_x = load([path_1,'Hx_fast_FT0_1030.mat']).H_combined;
@@ -311,6 +311,7 @@ plot(t_gradEPI(1:end-3)*1000, 1000*grad_EPI_x_FCVP(2,1:end-3).','-.','DisplayNam
 plot(t_gradEPI(1:end-3)*1000, 1000*grad_EPI_x_gstf(1,1:end-3).',':','DisplayName','GSTF prediction','Color',orange,'LineWidth',1.3);
 xlim([11.4 11.75]);
 ylim([-1 1]*0.5+35.2);
+annotation('arrow',0.555+[0 0.02],0.772+[0 0.02],'Color',lblue,'LineWidth',1.5);
 
 ax4 = subplot('Position',[0.75 a-dy-d_y dx2 dy]);
 plot(t_gradEPI(1:end-3)*1000, 1000*grad_EPI_x_VP(2,1:end-3).','DisplayName','VP','LineWidth',1.5,'Color',blue);
@@ -320,6 +321,7 @@ plot(t_gradEPI(1:end-3)*1000, 1000*grad_EPI_x_FCVP(2,1:end-3).','-.','DisplayNam
 plot(t_gradEPI(1:end-3)*1000, 1000*grad_EPI_x_gstf(1,1:end-3).',':','DisplayName','GSTF prediction','Color',orange,'LineWidth',1.3);
 xlim([12.2 12.55]);
 ylim([-1 1]*0.5-35.2);
+annotation('arrow',0.835+[0 -0.02],0.813+[0 -0.02],'Color',lblue,'LineWidth',1.5);
 
 ax5 = subplot('Position',[x1 a-1.75*dy-2*d_y-dy_l dx1 0.75*dy]);
 plot(t_gradEPI(1:end-3)*1000, 1000*(grad_EPI_x_VP(2,1:end-3).'-grad_EPI_x_CVP(2,1:end-3).'),'DisplayName','VP-CVP','LineWidth',1.5);

@@ -10,14 +10,17 @@ end
 cd(pathstr);
 
 %% Load results from multi delay reconstructions
-path2save = '.\EPI_results\';
+path2save = ['.' filesep 'EPI_results' filesep];
 name2save = 'multiDelay_EPI_tra_peAP_FOVph80_CVP_new.mat';
+% Change name2save according to which reconstruction should be loaded
+% name2save = 'multiDelay_EPI_tra_peAP_FOVph80_VP_new.mat';
+% name2save = 'multiDelay_EPI_tra_peAP_FOVph80_FCVP_new.mat';
 data = load([path2save,name2save]);
 
 % Load image data for plotting
 img_largeDelay = load([path2save,'results_EPI_tra_peAP_FOVph80_tooLargeDelay.mat']);
 img_smallDelay = load([path2save,'results_EPI_tra_peAP_FOVph80_tooSmallDelay.mat']);
-img_optDelay = load([path2save,'results_EPI_tra_peAP_FOVph80.mat']);
+img_optDelay = load([path2save,'results_EPI_tra_peAP_FOVph80_new.mat']);
 
 %% Fit polynomial to costfunction-vs-delay for each acquisition
 sum_out_del = squeeze(data.sum_out_del(1,1,:));

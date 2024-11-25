@@ -9,11 +9,11 @@ end
 [pathstr,name,ext]  = fileparts(mfile_name);
 cd(pathstr);
 % Add necessary scripts to the MATLAB path
-folder1 = '.\helper_functions\';
+folder1 = ['.' filesep 'helper_functions' filesep];
 addpath(folder1);
 
 %% Load images and trajectory data
-img_tra_peAP = load('.\EPI_results\results_EPI_tra_peAP_FOVph80_new.mat');
+img_tra_peAP = load(['.' filesep 'EPI_results' filesep 'results_EPI_tra_peAP_FOVph80_new.mat']);
 
 nRO = img_tra_peAP.nRO;
 kRO_navi = img_tra_peAP.kRO_navi;
@@ -40,7 +40,7 @@ img_test_VP_shift = circshift(img_test_VP,68,2);
 img_test_FCVP_shift = circshift(img_test_FCVP,68,2);
 
 % Load data with mask information
-data4mask = load('.\EPI_results\multiDelay_EPI_tra_peAP_FOVph80_CVP_new.mat');
+data4mask = load(['.' filesep 'EPI_results' filesep 'multiDelay_EPI_tra_peAP_FOVph80_CVP_new.mat']);
 x0 = data4mask.x0;
 y0 = data4mask.y0;
 r_out = data4mask.r_out;
@@ -48,7 +48,7 @@ r_out = data4mask.r_out;
 mask_out = double(sqrt((xx-x0).^2+(yy-y0+nRO/4).^2)>r_out); % mask covering the object
 
 % Test ROI for ghost quantification
-x1 = 24;
+x1 = 23;
 y1 = 141;
 r1 = 5;
 ROIghost = double(sqrt((xx-x1).^2+(yy-y1).^2)<r1);
